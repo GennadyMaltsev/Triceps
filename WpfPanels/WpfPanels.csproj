@@ -127,10 +127,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Inby\System\Inby.System.csproj">
-      <Project>{e3cf7abf-8801-4b69-b070-c6c1e4ba456c}</Project>
-      <Name>Inby.System</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Inby\Windows\Forms\Inby.Windows.Forms.csproj">
       <Project>{d5adbb6e-3014-43d5-8f84-dd512a2dccb7}</Project>
       <Name>Inby.Windows.Forms</Name>
