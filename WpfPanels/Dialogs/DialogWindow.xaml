@@ -1,0 +1,46 @@
+﻿<Window x:Class="WpfPanels.Dialogs.DialogWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:WpfPanels.ViewModels"
+        xmlns:dialogs="clr-namespace:WpfPanels.Dialogs"
+        mc:Ignorable="d" 
+        Title="DialogWindow" 
+        Height="250" Width="300" ShowInTaskbar="True" Closing="Window_Closing" 
+        BorderBrush="DarkGray" BorderThickness="1" WindowStartupLocation="CenterScreen" 
+        SizeToContent="WidthAndHeight" 
+        ResizeMode="CanResize" 
+        WindowStyle="ToolWindow"
+        Background="{DynamicResource {x:Static SystemColors.MenuBrushKey}}"
+        >
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/WpfPanels;component/Themes/CommonStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate DataType="{x:Type viewModels:DialogChangeTeamStateVM}">
+                <dialogs:DialogChangeTeamState />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModels:MessageBoxVM}">
+                <dialogs:DialogMessageBox />
+            </DataTemplate>
+
+        </ResourceDictionary>
+    </Window.Resources>
+    <Window.Style>
+        <Style TargetType="Window">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Window">
+                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{DynamicResource {x:Static SystemColors.MenuBrushKey}}">
+                                <ContentPresenter />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Style>
+</Window>

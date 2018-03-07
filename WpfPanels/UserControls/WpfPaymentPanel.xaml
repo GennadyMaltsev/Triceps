@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="WpfPanels.UserControls.WpfPaymentPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfPanels.UserControls"
+             xmlns:r="clr-namespace:WpfPanels.Properties"
+             xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+             xmlns:mockPanels="clr-namespace:WpfPanels.MockPanels"
+             xmlns:converters="clr-namespace:WpfPanels.Converters"
+             mc:Ignorable="d"  d:DataContext="{d:DesignInstance Type=mockPanels:MockDocumentPayment}"
+             d:DesignHeight="500" d:DesignWidth="600">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/WpfPanels;component/Themes/CommonStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto" MinWidth="150"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Grid.Column="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" MinWidth="100"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="{x:Static r:Resources.Payment_From}"/>
+                <ComboBox Grid.Row="0" Grid.Column="1" IsEditable="True" Text="{Binding From, Mode=TwoWay}"/>
+                <Button Grid.Row="0" Grid.Column="2" Content="Еще" Command="{Binding ShowFromCommand}"/>
+
+                <Grid Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Visibility="{Binding IsExtraFromVisible, Converter={converters:BoolToVisibilityConverter}}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="{x:Static r:Resources.Payment_Instead}"/>
+                    <ComboBox  Grid.Column="1"  IsEditable="True" Text="{Binding FromDiffers, Mode=TwoWay}"/>
+                </Grid>
+            </Grid>
+        </Border>
+        <!--<WindowsFormsHost Grid.Row="1" Grid.Column="0" Background="Transparent" Margin="3">
+            <dialogs:EntitySelector>
+                
+            </dialogs:EntitySelector>            
+        </WindowsFormsHost>-->
+    </Grid>
+</UserControl>
+
